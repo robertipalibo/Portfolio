@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Traffic Bottleneck Prediction Project | Robert Ipalibo</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      --primary:#0077b6;
+      --secondary:#00b4d8;
+      --muted:#5a6a73;
+      --bg:#f9f9f9;
+      --card:#ffffff;
+      --text:#222;
+      --accent:#ADDC7A;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      transition:background .25s,color .25s;
+    }
+
+    /* Header */
+    header{
+      background:var(--primary);
+      color:#fff;
+      padding:2.5rem 1rem;
+      text-align:center;
+    }
+    header h1{margin:0;font-size:1.9rem;font-weight:600}
+    header p{margin:.4rem 0 0;opacity:.95}
+
+    /* Container */
+    main{max-width:1200px;margin:24px auto;padding:1rem}
+
+    h2{
+      font-size:1.6rem;
+      color:var(--primary);
+      margin:1.6rem 0 .8rem;
+      padding-left:10px;
+      border-left:5px solid var(--primary);
+    }
+
+    p.lead{color:var(--muted);line-height:1.6}
+
+    /* gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:14px;
+      margin-bottom:18px;
+    }
+    .card{
+      background:var(--card);
+      border-radius:10px;
+      padding:14px;
+      box-shadow:0 6px 18px rgba(0,0,0,0.06);
+      transition:transform .22s,box-shadow .22s;
+      overflow:hidden;
+    }
+    .card:hover{transform:translateY(-6px);box-shadow:0 10px 26px rgba(0,0,0,0.10);}
+    .gallery img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      border-radius:8px;
+      display:block;
+      box-shadow:0 4px 12px rgba(0,0,0,0.06);
+    }
+
+    /* equations */
+    .equations{background:linear-gradient(180deg,#fff,#fbfdff);padding:12px;border-radius:8px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#0b3a57}
+    .equations code{display:block;white-space:pre-wrap;font-size:.95rem}
+
+    /* summary list */
+    .list-compact{list-style:none;padding:0;margin:0}
+    .list-compact li{padding:10px 0;border-bottom:1px solid #eee}
+    .list-compact li strong{display:block;color:var(--primary);margin-bottom:6px}
+
+    /* buttons */
+    .btn{
+      display:inline-block;
+      background:var(--secondary);
+      color:#fff;
+      padding:10px 14px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:600;
+      margin-right:10px;
+      box-shadow:0 6px 14px rgba(0,0,0,0.08);
+    }
+    .btn:hover{background:var(--primary)}
+
+    /* contact/footer */
+    #contact i{margin-right:8px;color:var(--primary)}
+    footer{background:var(--muted);color:#fff;text-align:center;padding:14px;margin-top:28px;border-top:4px solid rgba(0,0,0,0.04)}
+
+    /* responsive small */
+    @media(max-width:720px){
+      header h1{font-size:1.5rem}
+      .gallery img{height:180px}
+    }
+
+    /* dark mode */
+    body.dark{
+      --bg:#0e0f12;
+      --card:#121217;
+      --text:#e6eef6;
+      --muted:#9fb6c7;
+    }
+    body.dark header{background:#0a3d62}
+    body.dark footer{background:#0b2433}
+
+    /* small KPI ribbon */
+    .kpi-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .kpi{flex:1 1 160px;background:linear-gradient(180deg,#fff,#fbfdff);padding:12px;border-radius:8px;text-align:center;box-shadow:0 6px 14px rgba(0,0,0,0.06)}
+    .kpi h3{margin:0;font-size:1rem;color:var(--muted)} .kpi p{margin:.6rem 0 0;font-weight:700;font-size:1.2rem;color:var(--primary)}
+
+    /* small animation placeholder for charts */
+    .placeholder{
+      height:220px;border-radius:8px;background:linear-gradient(90deg, rgba(0,123,182,0.08), rgba(0,180,216,0.06));
+      display:flex;align-items:center;justify-content:center;color:var(--muted);
+      font-weight:600;letter-spacing:.2px;
+    }
+  </style>
+</head>
+<body>
+
+  <button class="toggle-btn" onclick="toggleTheme()" style="position:fixed;top:15px;right:20px;z-index:60;background:var(--secondary);border:none;padding:10px 14px;border-radius:20px;color:#fff;font-weight:700;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,.12)">
+    🌙 Dark Mode
+  </button>
+
+  <header>
+    <h1>Traffic Bottleneck Prediction Project</h1>
+    <p>Predictive modeling of vehicle speed before, at and after bottlenecks — Eureqa symbolic regression</p>
+  </header>
+
+  <main>
+
+    <section class="card">
+      <h2>Project Overview</h2>
+      <p class="lead">This project utilized <strong>Eureqa</strong> — a symbolic regression and machine learning tool — to estimate vehicle speeds in the vicinity of traffic bottlenecks. Models use free-flow speed <code>S</code>, observed flow <code>Q</code>, and density <code>K</code> as inputs to predict speed <code>V</code> before, at, and after bottlenecks. The models achieve high explanatory power (R² &gt; 0.97) and can be used for traffic planning, simulation and real-time control.</p>
+
+      <div class="kpi-row" style="margin-top:12px;">
+        <div class="kpi"><h3>Average free speed</h3><p>63.83 km/h</p></div>
+        <div class="kpi"><h3>Speed before</h3><p>9.84 km/h</p></div>
+        <div class="kpi"><h3>Speed at bottleneck</h3><p>31.91 km/h</p></div>
+        <div class="kpi"><h3>Speed after</h3><p>56.05 km/h</p></div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:18px;">
+      <h2>Model Visualizations</h2>
+
+      <div class="gallery" style="margin-top:8px;">
+        <div class="card">
+          <!-- replace the src with your actual chart filename -->
+          <img src="Predicted Model of Speed before Bottlenecks.jpg" alt="Predicted vs Actual Speed">
+        </div>
+
+        <div class="card">
+          <img src="Predicted Model of Speed at Bottlenecks.jpg" alt="Speed Profile at Bottleneck">
+        </div>
+
+        <div class="card">
+          <img src="Predicted Model of Speed after a Bottlenecks.jpg" alt="Residual / Error Distribution">
+        </div>
+	<img src="Graph Predicted Speed before bottlenecks.jpg" alt="Speed at Bottleneck Visualization">
+      <img src="Graph Predicted Speed at bottlenecks.jpg" alt="Speed at Bottleneck Visualization">
+      <img src="Graph Predicted Speed after bottlenecks.jpg" alt="Error Distribution Chart">
+      </div>
+
+      <p class="lead" style="margin-top:6px;">(ion.)</p>
+    </section>
+
+    <section class="card" style="margin-top:18px;">
+      <h2>Data & Models</h2>
+
+      <p class="lead">Models were derived using symbolic regression in Eureqa. Inputs: <strong>S</strong> = free speed (km/h), <strong>K</strong> = density (veh/km), <strong>Q</strong> = observed flow (veh/hr). Model fit statistics (R²) indicate very strong predictive power across all three stages.</p>
+
+      <div class="equations" style="margin-top:12px">
+        <strong>Developed predictive equations (V = predicted speed):</strong>
+        <code>
+Before bottleneck:
+V = 0.176*S + 0.016*K - 1.48 - 0.00122*Q
+
+At bottleneck:
+V = 0.521*S + 0.000887*Q - 1.61 - 1.02e-5 * S*Q - 5.54e-8 * Q^2
+
+After bottleneck:
+V = 0.992*S + 0.439*K - 38.71 - 1.29e-6 * Q^2 - 0.00127 * K^2
+        </code>
+        <p style="margin-top:8px;color:var(--muted)">Model performance (R²): Before 0.99125 • At 0.9977 • After 0.97524</p>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:18px;">
+      <h2>Key Insights</h2>
+      <ul class="list-compact" style="margin-top:10px">
+        <li><strong>Sharp pre-bottleneck deceleration</strong> — vehicles reduce speed ~200–300 m before the critical point, typically due to roadside activities and boarding/alighting behavior.</li>
+        <li><strong>Severe speed drop at bottleneck</strong> — the narrow bottleneck segment shows the lowest mean speeds (~31.9 km/h), confirming queue formation at local chokepoints.</li>
+        <li><strong>Non-linear recovery after bottleneck</strong> — speed recovery follows an exponential-like trend; full normalization occurs around ~500 m downstream in typical conditions.</li>
+        <li><strong>High explanatory power</strong> — R² &gt; 0.97 for all models indicates robust models suitable for planning and near real-time estimation.</li>
+        <li><strong>Density thresholds</strong> — jam density observed ≈ 282 veh/km; beyond this the flow relationship becomes unstable and delays increase drastically.</li>
+      </ul>
+    </section>
+
+    <section class="card" style="margin-top:18px;">
+      <h2>Recommendations</h2>
+      <ul class="list-compact" style="margin-top:10px">
+        <li><strong>Embed models into traffic control</strong> — integrate the equations into a simple tool (Excel, Python script or microservice) to estimate speeds in planning scenarios and trigger adaptive signal timings.</li>
+        <li><strong>Early-warning & driver advisory</strong> — use predicted pre-bottleneck deceleration to provide advance warnings to drivers (VMS or in-vehicle alerts) and recommend speed harmonization.</li>
+        <li><strong>Targeted infrastructure fixes</strong> — prioritize interventions (bus bay relocation, formalized loading areas, pedestrian crossings) at identified 100–300m approach zones to remove root causes.</li>
+        <li><strong>Real-time data fusion</strong> — combine sensor or probe-vehicle live data to re-run predictions and adjust control in near real-time, improving robustness during high-flow events.</li>
+        <li><strong>Use models for construction planning</strong> — apply the models to estimate travel-time impacts caused by temporary works and plan diversions or off-peak executions.</li>
+      </ul>
+    </section>
+
+    <section class="card" style="margin-top:18px;">
+      <h2>Impact</h2>
+      <p class="lead">Deploying these models helps reduce delays, improve travel-time reliability, and supports evidence-based decisions for targeted investments (e.g., bus stop relocation, lane management). The models also serve as an educational tool for students and practitioners to explore speed–flow–density interactions.</p>
+
+      <p style="margin-top:10px">
+        <a href="#" class="btn" id="datasetLink">📈 View Model Dataset</a>
+        <a href="index.html#projects" class="btn">⬅️ Back to Portfolio</a>
+      </p>
+    </section>
+
+    <section id="contact" class="card" style="margin-top:18px;">
+      <h2>Contact</h2>
+      <p><i class="fas fa-phone"></i> +234 810 6326 897</p>
+      <p><i class="fas fa-envelope"></i>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ipaliboebeye@gmail.com" target="_blank" rel="noopener">ipaliboebeye@gmail.com</a>
+      </p>
+      <p>
+        <a href="https://www.facebook.com/share/1CxhxjLMZG/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://wa.me/2348106326897" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/robertipalibo" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/robertipalibo" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </p>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; 2025 Robert Ipalibo — Traffic Bottleneck Prediction Project
+  </footer>
+
+  <script>
+    // theme toggle
+    function toggleTheme(){
+      document.body.classList.toggle('dark');
+      const btn = document.querySelector('.toggle-btn') || document.querySelector('button[onclick^="toggleTheme"]');
+      if(btn) btn.textContent = document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+
+    // dataset link placeholder (replace with actual URL)
+    document.getElementById('datasetLink').addEventListener('click', function(e){
+      e.preventDefault();
+      // Replace the URL below with your real dataset link
+      window.open('https://drive.google.com/', '_blank', 'noopener');
+    });
+  </script>
+
+</body>
+</html>

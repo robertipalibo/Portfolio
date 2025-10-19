@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fali Employee Performance | Robert Ipalibo</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #0077b6;
+      --secondary: #00b4d8;
+      --dark: #222;
+      --light: #f9f9f9;
+      --text: #333;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: var(--light);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 2.5rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 3rem 1rem;
+    }
+
+    h2 {
+      border-left: 5px solid var(--primary);
+      padding-left: 10px;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 0.5rem 1rem 0 0;
+      padding: 10px 15px;
+      background: var(--secondary);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--primary);
+    }
+
+    .summary-box {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+
+    .summary-box table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .summary-box th, .summary-box td {
+      border-bottom: 1px solid #ddd;
+      padding: 10px;
+    }
+
+    .summary-box th {
+      background-color: #f1f9ff;
+      color: var(--primary);
+    }
+
+    .recommendations ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .recommendations li {
+      margin-bottom: 1.5rem;
+      padding-left: 1rem;
+      border-left: 4px solid var(--secondary);
+    }
+
+    .recommendations strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+
+    #contact p {
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+
+    #contact a {
+      font-size: 1.6rem;
+      margin: 0 12px;
+      color: var(--primary);
+      transition: color 0.3s;
+    }
+
+    #contact a:hover {
+      color: var(--secondary);
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    /* Dark Mode */
+    body.dark {
+      background: #121212;
+      color: #e0e0e0;
+    }
+
+    body.dark header {
+      background: #0a3d62;
+    }
+
+    body.dark footer {
+      background: #1e1e1e;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      background: var(--secondary);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: background 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <button class="toggle-btn" onclick="toggleTheme()">🌙 Dark Mode</button>
+
+  <header>
+    <h1>Fali Employee Performance Dashboard</h1>
+    <p>Comprehensive Workforce Performance Analysis</p>
+  </header>
+
+  <section>
+    <h2>Project Overview</h2>
+    <p>
+      This project analyzes employee performance across various departments, job roles, and demographics. 
+      It explores the impact of training, experience, and job category on overall ratings. 
+      The interactive dashboard offers valuable insights to help management identify performance trends, 
+      improve productivity, and design data-driven workforce strategies for long-term success.
+    </p>
+
+    <h2>Dashboard Views</h2>
+    <div class="gallery">
+      <img src="Fali Employee Performance analysis.jpg" alt="Employee Performance Dashboard 1">
+      <img src="Fali Employee Performance analysis Extra.jpg" alt="Employee Performance Dashboard 2">
+    </div>
+
+    <div class="summary-box">
+      <h2>Performance Summary</h2>
+      <table>
+        <tr>
+          <th>Metric</th>
+          <th>Insight</th>
+        </tr>
+        <tr>
+          <td>Performance Rating by Training Hours</td>
+          <td>Employees with higher training hours consistently perform better, indicating the effectiveness of continuous learning.</td>
+        </tr>
+        <tr>
+          <td>Performance Rating by Age Group (48–56)</td>
+          <td>This group accounts for <strong>20.26%</strong> of top performers, showing high experience-based consistency.</td>
+        </tr>
+        <tr>
+          <td>Monthly Performance Trend</td>
+          <td>Performance peaked in <strong>December</strong> and dropped to its lowest in <strong>August</strong>, suggesting seasonal motivation patterns.</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="recommendations">
+      <h2>Recommendations</h2>
+      <ul>
+        <li><strong>Invest in Targeted Training</strong>Expand structured learning programs as training hours show strong correlation with higher performance.</li>
+        <li><strong>Leverage Experienced Workforce</strong>Encourage mentorship from employees aged 48–56 to transfer knowledge and improve team output.</li>
+        <li><strong>Motivation Strategy</strong>Introduce incentive programs in Q3 (around August) to maintain consistent performance levels.</li>
+        <li><strong>Job Role Optimization</strong>Reevaluate low-performing roles for task alignment and workload balancing.</li>
+        <li><strong>Data-Driven HR Policies</strong>Use these insights to design promotion, training, and retention frameworks that sustain productivity growth.</li>
+      </ul>
+    </div>
+
+    <a href="https://drive.google.com/file/d/10qd9ma165T2beSG8o85YSUTWLvbnrPgp/view?usp=drive_link" target="_blank" class="btn">📊 View Dataset</a>
+    <a href="index.html#projects" class="btn">⬅️ Back to Portfolio</a>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p><i class="fas fa-phone"></i> +234 810 6326 897</p>
+    <p><i class="fas fa-envelope"></i> 
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ipaliboebeye@gmail.com" target="_blank">
+        ipaliboebeye@gmail.com
+      </a>
+    </p>
+    <p>
+      <a href="https://www.facebook.com/share/1CxhxjLMZG/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://wa.me/2348106326897" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/robertipalibo" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/robertipalibo" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Robert Ipalibo. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+      let btn = document.querySelector(".toggle-btn");
+      btn.textContent = document.body.classList.contains("dark") ? "☀️ Light Mode" : "🌙 Dark Mode";
+    }
+  </script>
+
+</body>
+</html>

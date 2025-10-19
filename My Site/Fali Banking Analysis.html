@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fali Banking Analysis | Robert Ipalibo</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #0077b6;
+      --secondary: #00b4d8;
+      --dark: #222;
+      --light: #f9f9f9;
+      --text: #333;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: var(--light);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 2.5rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 3rem 1rem;
+    }
+
+    h2 {
+      border-left: 5px solid var(--primary);
+      padding-left: 10px;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 0.5rem 1rem 0 0;
+      padding: 10px 15px;
+      background: var(--secondary);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: var(--primary);
+    }
+
+    .recommendations ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .recommendations li {
+      margin-bottom: 1.5rem;
+      padding-left: 1rem;
+      border-left: 4px solid var(--secondary);
+    }
+
+    .recommendations strong {
+      display: block;
+      color: var(--primary);
+      margin-bottom: 0.3rem;
+    }
+
+    #contact p {
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+
+    #contact a {
+      font-size: 1.6rem;
+      margin: 0 12px;
+      color: var(--primary);
+      transition: color 0.3s;
+    }
+
+    #contact a:hover {
+      color: var(--secondary);
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
+    /* Dark Mode */
+    body.dark {
+      background: #121212;
+      color: #e0e0e0;
+    }
+
+    body.dark header {
+      background: #0a3d62;
+    }
+
+    body.dark footer {
+      background: #1e1e1e;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      background: var(--secondary);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      color: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: background 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <button class="toggle-btn" onclick="toggleTheme()">🌙 Dark Mode</button>
+
+  <header>
+    <h1>Fali Banking Analysis Dashboard</h1>
+    <p>Detailed Project View</p>
+  </header>
+
+  <section>
+    <h2>Project Overview</h2>
+    <p>
+      This project involved developing an automated Excel dashboard designed to analyze banking transactions, identify trends, and highlight key revenue drivers. 
+      The process included comprehensive data cleaning, transformation, and structuring to ensure accuracy and usability. 
+      The dashboard is fully automated, providing real-time interactive insights that support strategic decision-making and drive financial performance improvement.
+    </p>
+
+    <h2>Dashboard Views</h2>
+    <div class="gallery">
+      <img src="Fali Banking Analysis.jpg" alt="Fali Banking Dashboard Screenshot 1">
+      <img src="Fali Banking Extra.jpg" alt="Additional Screenshot 2">
+    </div>
+
+    <div class="recommendations">
+      <h2>Recommendations</h2>
+      <ul>
+        <li><strong>Prioritize Middle-Income Customers</strong>Focus on middle-income customers by introducing fairer pricing structures to increase retention.</li>
+        <li><strong>Segmented Product Offerings</strong>Tailor products for different income groups to align services with financial capacity.</li>
+        <li><strong>Channel Development</strong>Enhance mobile banking experiences while maintaining reliable branch operations.</li>
+        <li><strong>Prepare for Seasonal Spikes</strong>Scale systems and promotions during high transaction periods like Q4.</li>
+        <li><strong>Branch Investment Strategy</strong>Allocate resources strategically based on performance insights.</li>
+      </ul>
+    </div>
+
+    <a href="https://drive.google.com/file/d/1dlN5wfFbaE3j1HcIsH4vsgX_OOEMoiLe/view" target="_blank" class="btn">📊 View Dataset</a>
+    <a href="index.html#projects" class="btn">⬅️ Back to Portfolio</a>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p><i class="fas fa-phone"></i> +234 810 6326 897</p>
+    <p><i class="fas fa-envelope"></i> 
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ipaliboebeye@gmail.com" target="_blank">
+        ipaliboebeye@gmail.com
+      </a>
+    </p>
+    <p>
+      <a href="https://www.facebook.com/share/1CxhxjLMZG/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://wa.me/2348106326897" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/robertipalibo" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/robertipalibo" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Robert Ipalibo. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+      let btn = document.querySelector(".toggle-btn");
+      btn.textContent = document.body.classList.contains("dark") ? "☀️ Light Mode" : "🌙 Dark Mode";
+    }
+  </script>
+
+</body>
+</html>
